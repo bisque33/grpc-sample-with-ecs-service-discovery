@@ -1,0 +1,14 @@
+FROM node:10.11.0-alpine
+
+ENV NODE_ENV=development
+
+WORKDIR /app
+
+ADD package.json /app
+
+RUN yarn install
+
+ADD helloworld.proto /app
+ADD greeter_client.js /app
+
+CMD node greeter_client.js
